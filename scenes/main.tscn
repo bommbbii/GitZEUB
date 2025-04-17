@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=21 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
 [ext_resource type="Script" uid="uid://btk6ufxeaxh6v" path="res://scripts/hud.gd" id="3_s8mkj"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://oqfhfp1a80qd" path="res://objects/cloud.tscn" id="10_5ksau"]
 [ext_resource type="Texture2D" uid="uid://bfcs058tgvdux" path="res://AllSkyFree_Godot-10e858fef0a9c5fa071de8bc191c3b4bef00edda/Screenshots/_0002_AllSkyFree_Screen_07.jpg" id="11_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://i5m0g62oylpr" path="res://sounds/Musique test.mp3" id="11_ya4ey"]
+
+[sub_resource type="Theme" id="Theme_ya4ey"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
 font = ExtResource("3_w27de")
@@ -62,6 +64,21 @@ shadow_opacity = 0.75
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("3_s8mkj")
+
+[node name="UserInterface" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="HUD/UserInterface"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 43.0
+offset_right = 114.0
+offset_bottom = 66.0
+theme = SubResource("Theme_ya4ey")
+text = "Score 0"
 
 [node name="Crosshair" type="TextureRect" parent="HUD"]
 anchors_preset = 8

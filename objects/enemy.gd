@@ -47,6 +47,7 @@ func destroy():
 
 func _on_timer_timeout():
 	raycast.force_raycast_update()
+	
 
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
