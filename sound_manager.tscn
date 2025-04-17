@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cb15b5ybdqhku"]
 
-[ext_resource type="AudioStream" uid="uid://bx6adov7ct48w" path="res://sounds/Nyan Cat! song.mp3" id="1_g5net"]
+[ext_resource type="AudioStream" uid="uid://5s5xmxwndtnr" path="res://sounds/JOJO theme chill song.mp3" id="1_g5net"]
 
 [node name="Sound Manager" type="Node"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_g5net")
-volume_db = -25.0
+volume_db = -10.0
 autoplay = true
