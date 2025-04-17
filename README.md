@@ -1,6 +1,6 @@
 <p align="center"><img src="icon.png"/></p>
 
-# znab
+# Suce un zeub noé
 
 This package includes a basic template for a first person shooter in Godot 4.3 (stable). Includes features like;
 
