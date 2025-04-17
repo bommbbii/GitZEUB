@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb15b5ybdqhku"]
+
+[ext_resource type="AudioStream" uid="uid://i5m0g62oylpr" path="res://sounds/Musique test.mp3" id="1_g5net"]
+
+[node name="SoundManager" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_g5net")
+volume_db = -15.0
+autoplay = true
