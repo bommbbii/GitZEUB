@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=23 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
 [ext_resource type="Script" uid="uid://btk6ufxeaxh6v" path="res://scripts/hud.gd" id="3_s8mkj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://oqfhfp1a80qd" path="res://objects/cloud.tscn" id="10_5ksau"]
 [ext_resource type="Texture2D" uid="uid://bfcs058tgvdux" path="res://AllSkyFree_Godot-10e858fef0a9c5fa071de8bc191c3b4bef00edda/Screenshots/_0002_AllSkyFree_Screen_07.jpg" id="11_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://i5m0g62oylpr" path="res://sounds/Musique test.mp3" id="11_ya4ey"]
+[ext_resource type="Shader" uid="uid://2oisl0snpn0" path="res://scenes/main.gdshader" id="12_eb6dy"]
 
 [sub_resource type="Theme" id="Theme_ya4ey"]
 
@@ -51,6 +52,9 @@ collision_mode = 2
 [sub_resource type="BoxMesh" id="BoxMesh_a8y0u"]
 uv2_padding = 1.47
 size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
+shader = ExtResource("12_eb6dy")
 
 [node name="Main" type="Node3D"]
 
@@ -201,6 +205,8 @@ transform = Transform3D(1.73205, 0, 1, 0, 2, 0, -1, 0, 1.73205, -30.1261, 2.4268
 transform = Transform3D(1.12202, 1.39419, -2.40776, 1.53922, 1.85165, 1.78946, 2.31773, -1.90463, -0.0227883, -0.881504, 13.0297, -30.1859)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.53031, 0)
+light_color = Color(1, 0, 1, 1)
 
 [node name="SoundManager" type="Node" parent="."]
 
@@ -221,5 +227,15 @@ fixed_fps = 60
 collision_base_size = 128.0
 process_material = SubResource("ParticleProcessMaterial_trceg")
 draw_pass_1 = SubResource("BoxMesh_a8y0u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_trceg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
