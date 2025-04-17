@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=20 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
 [ext_resource type="Script" uid="uid://btk6ufxeaxh6v" path="res://scripts/hud.gd" id="3_s8mkj"]
@@ -28,13 +28,35 @@ sky_material = SubResource("PanoramaSkyMaterial_trceg")
 background_mode = 2
 sky = SubResource("Sky_a8y0u")
 
+[sub_resource type="Curve" id="Curve_ya4ey"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eb6dy"]
+curve = SubResource("Curve_ya4ey")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trceg"]
+orbit_velocity_min = -2.0
+orbit_velocity_max = -0.575
+orbit_velocity_curve = SubResource("CurveTexture_eb6dy")
+radial_velocity_min = 34.48
+radial_velocity_max = 34.48
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+collision_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_a8y0u"]
+uv2_padding = 1.47
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
 crosshair = NodePath("../HUD/Crosshair")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0.255927, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
@@ -172,5 +194,15 @@ autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jkv2x")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864812, 6.18879, -0.83131)
+amount = 10
+lifetime = 1.75
+speed_scale = 0.1
+fixed_fps = 60
+collision_base_size = 128.0
+process_material = SubResource("ParticleProcessMaterial_trceg")
+draw_pass_1 = SubResource("BoxMesh_a8y0u")
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
