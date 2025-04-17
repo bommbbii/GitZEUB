@@ -1,10 +1,10 @@
 <p align="center"><img src="icon.png"/></p>
 
-# ça tanghulu 
+# Suce un zeub noé
 
 This package includes a basic template for a first person shooter in Godot 4.3 (stable). Includes features like;
 
-- Character controller
+- Noé ca baise
 - Weapons, switching weapons
 - Enemies
 - Sprites and 3D Models _(CC0 licensed)_
