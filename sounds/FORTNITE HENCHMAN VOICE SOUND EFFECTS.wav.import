@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqjenorpg23sq"
+path="res://.godot/imported/FORTNITE HENCHMAN VOICE SOUND EFFECTS.wav-49234b1e9e9ee2524a67e9d06b07c037.sample"
+
+[deps]
+
+source_file="res://sounds/FORTNITE HENCHMAN VOICE SOUND EFFECTS.wav"
+dest_files=["res://.godot/imported/FORTNITE HENCHMAN VOICE SOUND EFFECTS.wav-49234b1e9e9ee2524a67e9d06b07c037.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
