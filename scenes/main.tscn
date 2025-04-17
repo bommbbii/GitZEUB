@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=24 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
 [ext_resource type="Script" uid="uid://btk6ufxeaxh6v" path="res://scripts/hud.gd" id="3_s8mkj"]
+[ext_resource type="Script" uid="uid://jr3u373exb8" path="res://scenes/score_label.gd" id="3_trceg"]
 [ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="3_w27de"]
 [ext_resource type="PackedScene" uid="uid://dpm3l05d7fu35" path="res://objects/platform.tscn" id="5_3s40e"]
 [ext_resource type="PackedScene" uid="uid://r7rt7pth4u7o" path="res://objects/wall_low.tscn" id="5_6vel1"]
@@ -11,15 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://oqfhfp1a80qd" path="res://objects/cloud.tscn" id="10_5ksau"]
 [ext_resource type="Texture2D" uid="uid://bfcs058tgvdux" path="res://AllSkyFree_Godot-10e858fef0a9c5fa071de8bc191c3b4bef00edda/Screenshots/_0002_AllSkyFree_Screen_07.jpg" id="11_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://i5m0g62oylpr" path="res://sounds/Musique test.mp3" id="11_ya4ey"]
-[ext_resource type="Shader" uid="uid://2oisl0snpn0" path="res://scenes/main.gdshader" id="12_eb6dy"]
-
-[sub_resource type="Theme" id="Theme_ya4ey"]
+[ext_resource type="Shader" path="res://scenes/main.gdshader" id="12_eb6dy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
 font = ExtResource("3_w27de")
 font_size = 36
 outline_size = 12
 outline_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="Theme" id="Theme_ya4ey"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_trceg"]
 panorama = ExtResource("11_eb6dy")
@@ -75,15 +76,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ScoreLabel" type="Label" parent="HUD/UserInterface"]
-layout_mode = 0
-offset_left = 58.0
-offset_top = 43.0
-offset_right = 114.0
-offset_bottom = 66.0
-theme = SubResource("Theme_ya4ey")
-text = "Score 0"
-
 [node name="Crosshair" type="TextureRect" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,23 +102,36 @@ text = "100%"
 label_settings = SubResource("LabelSettings_fpmwk")
 vertical_alignment = 2
 
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_left = 58.0
+offset_top = 43.0
+offset_right = 114.0
+offset_bottom = 66.0
+theme = SubResource("Theme_ya4ey")
+text = "Score 0"
+script = ExtResource("3_trceg")
+
 [node name="Enemies" type="Node" parent="."]
 
-[node name="enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying" parent="Enemies" node_paths=PackedStringArray("player", "score") instance=ExtResource("8_7ty2f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.5, -6)
 player = NodePath("../../Player")
+score = NodePath("../../HUD/ScoreLabel")
 
-[node name="enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player", "score") instance=ExtResource("8_7ty2f")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 2.5, 1.5)
 player = NodePath("../../Player")
+score = NodePath("../../HUD/ScoreLabel")
 
-[node name="enemy-flying3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying3" parent="Enemies" node_paths=PackedStringArray("player", "score") instance=ExtResource("8_7ty2f")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.5, 3.5, 9)
 player = NodePath("../../Player")
+score = NodePath("../../HUD/ScoreLabel")
 
-[node name="enemy-flying4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+[node name="enemy-flying4" parent="Enemies" node_paths=PackedStringArray("player", "score") instance=ExtResource("8_7ty2f")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 15.5, 4, -7.5)
 player = NodePath("../../Player")
+score = NodePath("../../HUD/ScoreLabel")
 
 [node name="Level" type="Node" parent="."]
 

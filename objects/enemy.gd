@@ -5,6 +5,7 @@ extends Node3D
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
 @onready var muzzle_b = $MuzzleB
+@export var score : Label
 
 var health := 100
 var time := 0.0
@@ -42,6 +43,7 @@ func destroy():
 
 	destroyed = true
 	queue_free()
+	score.scoreAdd()
 
 # Shoot when timer hits 0
 
